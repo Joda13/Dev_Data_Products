@@ -1,0 +1,58 @@
+---
+title: "Airquality analysis"
+author: "Johannes Damster"
+date: "22nd of June 2021"
+output: slidy_presentation
+---
+
+## Idea
+
+This R Markdown presentation aims to analyse the linear relationship between airquality indicated by Ozone concentration and Temperature, Solar Radiation, and Wind. 
+
+The output will be a scatterplot with a linear trend.
+
+## Data
+
+The dataset **airquality** allows to investigate the relationship between airquality (measured by Ozone concentration) and other meteorological variables like Temperature, Solar Radiation and Wind.
+
+It comprises daily air quality measurements in New York, May to September 1973 and includes `r dim(airquality)[1]` observations on `r dim(airquality)[2]` variables.
+
+```{r echo = FALSE, comment= ""}
+head(airquality, n = 3)
+```
+
+Source: The data were obtained from the New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).
+
+## Usage
+
+This little programm plots a scatterplot of Ozone concentration over three different variables.
+You can choose on the left which variable to use:
+
+			- Temperature
+			- Solar Radiation
+			- Wind
+
+It will also perform a linear regression resulting in a trendline.
+
+## Example output
+
+```{r echo = FALSE}
+plot(airquality$Ozone~airquality$Solar.R, xlab = "Solar Radiation", ylab = "Ozone")
+trend_Sol <- lm(airquality$Ozone~airquality$Solar.R, airquality)
+abline(trend_Sol, col = "red")
+```
+
+## Important links
+
+Please follow this link to use the App:
+https://joda13.shinyapps.io/Temperature_analysis/
+
+User Interface code:
+https://github.com/Joda13/Dev_Data_Products/blob/main/ui.R
+
+Server code:
+https://github.com/Joda13/Dev_Data_Products/blob/main/server.R
+
+
+Have fun!
+               
