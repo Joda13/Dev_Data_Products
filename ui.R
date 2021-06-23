@@ -4,19 +4,18 @@ shinyUI(
     navbarPage("Shiny Application",
                tabPanel("Analysis",
                         fluidPage(
-                            titlePanel("Airquality and its linear relation to Temperature, Solar Radiation, and Wind"),
+                            titlePanel("Ozone concentration and its relation to Temperature, Solar Radiation, and Wind"),
                             sidebarLayout(
                                 sidebarPanel(
                                     selectInput("variable", "Variable:",
-                                                c("Temperature in Fahrenheit" = "Temp",
-                                                  "Solar Radiation" = "Solar.R",
-                                                  "Wind" = "Wind"))),
+                                                c("Temperature (in F)" = "Temp",
+                                                  "Solar Radiation (in lang)" = "Solar.R",
+                                                  "Wind (in mph)" = "Wind"))),
                                 mainPanel(
                                     h3(textOutput("caption")),
-                                    tabsetPanel(type = "tabs",
-                                                tabPanel("Regression model",
-                                                         plotOutput("airqualityPlot"),
-                                                         verbatimTextOutput("fit"))))))),
+                                    plotOutput("airqualityPlot"),
+                                    verbatimTextOutput("fit"))))),
+    					 
                tabPanel("Data Information",
                         h3("Airquality data"),
                         p("This datasets allows to investigate the relationship between airquality (measured by Ozone concentration) and other meteorological variables like Temperature, Solar Radiation and Wind."),
